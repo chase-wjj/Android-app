@@ -17,20 +17,7 @@ public class NewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_three);
-        TextView name = findViewById(R.id.name_textView);
-        TextView time = findViewById(R.id.time_textView);
-        TextView title = findViewById(R.id.title_textView);
-        TextView content = findViewById(R.id.textView12);
-        ImageView image1 = findViewById(R.id.imageView2);
-        ImageView image2 = findViewById(R.id.imageView4);
-        ImageView image3 = findViewById(R.id.imageView3);
-        image1.setImageResource(R.drawable.image10);
-        image2.setImageResource(R.drawable.image11);
-        image3.setImageResource(R.drawable.image12);
-        image1.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        image1.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        image1.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        Button button = findViewById(R.id.button);
+
         /*button.setOnClickListener(view -> {
             Intent ReplyIntent = new Intent(view.getContext(),MainActivity.class);
             String[] mess = {name.getText().toString(),time.getText().toString(),title.getText().toString(),content.getText().toString()};

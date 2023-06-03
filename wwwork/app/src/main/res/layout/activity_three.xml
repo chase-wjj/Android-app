@@ -5,165 +5,104 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="409dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="23dp"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+
+    <TextView
+        android:id="@+id/newtiezi"
+        android:layout_width="106dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginBottom="47dp"
+        android:text=" 新帖子"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="91dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/headphoto"
-                android:layout_width="91dp"
-                android:layout_height="91dp"
-                android:layout_weight="1"
-                android:src="@drawable/robot" />
-
-            <LinearLayout
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/name_textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="39dp"
-                    android:text="不吃紫菜炒饭" />
-
-                <TextView
-                    android:id="@+id/time_textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:text="19:53:44" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="29dp"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/sign_textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="33dp"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="29dp"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/title_textView"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:textSize="24sp"
-            android:text="鼓楼大街一日游" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:text="人真的好多 \n 但是为什么麦当劳没卖杨枝甘露麦旋风" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="95dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-
-                tools:srcCompat="@drawable/thumbnail_large" />
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-
-                tools:srcCompat="@drawable/thumbnail_large" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                tools:srcCompat="@drawable/thumbnail_large" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="109dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-
-                tools:srcCompat="@drawable/thumbnail_large" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-
-                tools:srcCompat="@drawable/thumbnail_large" />
-
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-
-                tools:srcCompat="@drawable/thumbnail_large" />
-        </LinearLayout>
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="133dp"
-        android:layout_marginBottom="44dp"
+
+        android:layout_marginBottom="82dp"
         android:background="@color/my_color"
         android:onClick="returnReply"
         android:shadowRadius="@integer/material_motion_duration_medium_2"
         android:text="完成"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:ignore="UsingOnClickInXml" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="401dp"
+        android:layout_height="325dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="53dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newtiezi">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/titletext"
+                android:layout_width="81dp"
+                android:layout_height="50dp"
+                android:text=" 标题 :"
+                android:textSize="25dp" />
+
+            <EditText
+                android:id="@+id/titleedit"
+                android:layout_width="332dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="81dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/contenttext"
+                        android:layout_width="81dp"
+                        android:layout_height="53dp"
+                        android:text=" 内容 :"
+                        android:textSize="25dp" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/contentedit"
+                    android:layout_width="329dp"
+                    android:layout_height="151dp"
+                    android:enabled="true"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:maxLines="5"
+                    android:minLines="3"
+                    android:scrollbars="vertical" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
