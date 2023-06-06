@@ -46,7 +46,6 @@ public class ListFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_list, container, false);
         addButton = view.findViewById(R.id.add_button);
-        textInputLayout = view.findViewById(R.id.textInputLayout);
         recyclerView = view.findViewById(R.id.recyclerview);
         // Create an adapter and supply the data to be displayed.
         adapter = new TodoListAdapter(getContext(), todoList);
