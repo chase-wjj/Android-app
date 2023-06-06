@@ -17,7 +17,7 @@ public class PagerAdapter extends FragmentStateAdapter {
 
         mFragments.add(new ListFragment());
         mFragments.add(new EmptyFragment());
-        mFragments.add(new ReadFragment());
+        mFragments.add(new FriendFragment());
         mFragments.add(new MineFragment());
     }
 

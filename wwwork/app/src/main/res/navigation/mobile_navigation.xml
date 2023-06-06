@@ -16,8 +16,8 @@
         tools:layout="@layout/fragment_topic" />
     <fragment
         android:id="@+id/navigation_read"
-        android:name="org.tsinghua.todoapp.ReadFragment"
-        android:label="@string/title_read"
+        android:name="org.tsinghua.todoapp.FriendFragment"
+        android:label="好友"
         tools:layout="@layout/fragment_topic" />
     <fragment
         android:id="@+id/navigation_mine"
