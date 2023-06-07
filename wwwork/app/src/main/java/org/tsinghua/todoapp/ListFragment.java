@@ -25,6 +25,7 @@ public class ListFragment extends Fragment {
     private View view;
 
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +66,7 @@ public class ListFragment extends Fragment {
                 int[] res = {R.drawable.image10,R.drawable.image11,R.drawable.image12};
                 adapter.getTodoList().insert(mess[0],mess[1],mess[2],mess[3],res);
                 adapter.notifyDataSetChanged();
+
 
             }
         });

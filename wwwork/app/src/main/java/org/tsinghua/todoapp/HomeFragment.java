@@ -2,6 +2,7 @@ package org.tsinghua.todoapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,11 +31,19 @@ public class HomeFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
 
+    public String username ;
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 // Put initial data into the word list.
+        /*MainActivity mainActivity = (MainActivity) getActivity();
+        if (mainActivity != null) {
+            // 访问MainActivity中的username变量
+            username = mainActivity.getUsername();
+        }*/
 
     }
 

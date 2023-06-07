@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,11 +30,21 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
+    public String username;
+
+    public String getUsername(){
+        return username;
+    }
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //获取登录界面传递而来的username
+        SharedPreferences sharedPreferences = getSharedPreferences("loggeduser", MODE_PRIVATE);
+        username = sharedPreferences.getString("username", ""); // 从SharedPreferences中获取用户名
+
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -49,11 +60,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController,
                 appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-
-
-
-
-
 
 
 
