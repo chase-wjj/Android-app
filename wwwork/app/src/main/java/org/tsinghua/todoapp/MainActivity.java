@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         //获取登录界面传递而来的username
         SharedPreferences sharedPreferences = getSharedPreferences("loggeduser", MODE_PRIVATE);
         username = sharedPreferences.getString("username", ""); // 从SharedPreferences中获取用户名
+        if(username != null){
+            Log.v("获取username",username);
+        }
 
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());

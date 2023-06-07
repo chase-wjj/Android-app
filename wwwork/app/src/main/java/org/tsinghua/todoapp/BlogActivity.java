@@ -7,15 +7,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.Time;
 
-
-public class SecondActivity extends AppCompatActivity {
+public class BlogActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_two);
+        setContentView(R.layout.activity_blog);
 
         Intent intent = getIntent();
         String[] message = intent.getStringArrayExtra("CONTENT_MESSAGE");
