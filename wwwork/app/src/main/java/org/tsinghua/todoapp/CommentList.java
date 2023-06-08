@@ -6,7 +6,7 @@ public class CommentList {
 
     private ArrayList<Comment> data = new ArrayList<>();
 
-    public CommentList(ArrayList<String> content,ArrayList<String> time,ArrayList<String> username){
+    public CommentList(){
 
     }
 

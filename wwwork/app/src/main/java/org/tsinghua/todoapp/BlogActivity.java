@@ -1,14 +1,25 @@
 package org.tsinghua.todoapp;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public class BlogActivity extends AppCompatActivity {
+    private CommentList commentList = new CommentList();
+
+    Button comment;
+    RecyclerView recyclerView;
+    CommentAdapter commentAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -17,26 +28,43 @@ public class BlogActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String[] message = intent.getStringArrayExtra("CONTENT_MESSAGE");
-        int[] message_res = intent.getIntArrayExtra("ARR_MESSAGE");
-        TextView nameView;
-        TextView TimeView;
-        TextView TitleView;
-        TextView ContentView;
-        nameView = findViewById(R.id.name_textView);
-        TimeView = findViewById(R.id.time_textView);
-        TitleView = findViewById(R.id.title_textView);
-        ContentView = findViewById(R.id.textView12);
+        int blogid = intent.getIntExtra("Blog_ID",-1);
+        Log.v("get blog_id",String.valueOf(blogid));
+        TextView nameView = findViewById(R.id.name_textView);
+        TextView timeView = findViewById(R.id.time_textView);
+        TextView titleView = findViewById(R.id.title_textView);
+        TextView contentView = findViewById(R.id.textView12);
         nameView.setText(message[0]);
-        TimeView.setText(message[1]);
-        TitleView.setText(message[2]);
-        ContentView.setText(message[3]);
+        timeView.setText(message[1]);
+        titleView.setText(message[2]);
+        contentView.setText(message[3]);
 
-        ImageView image1View = findViewById(R.id.imageView2);
-        ImageView image2View = findViewById(R.id.imageView3);
-        ImageView image3View = findViewById(R.id.imageView4);
+        comment = findViewById(R.id.button3);
 
-        image1View.setImageResource(message_res[0]);
-        image2View.setImageResource(message_res[1]);
-        image3View.setImageResource(message_res[2]);
+        recyclerView = findViewById(R.id.recyclerView);
+        commentList.insert("大佬666","LiHua","18:51:12");
+        commentList.insert("大佬777","WangLei","15:41:11");
+        commentAdapter = new CommentAdapter(this,commentList);
+        recyclerView.setAdapter(commentAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        int spacing = -20;
+        recyclerView.addItemDecoration(new MyItemDecoration(spacing));
+
+
+
     }
+    public class MyItemDecoration extends RecyclerView.ItemDecoration {
+        private final int verticalSpaceHeight;
+
+        public MyItemDecoration(int verticalSpaceHeight) {
+            this.verticalSpaceHeight = verticalSpaceHeight;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
+                                   RecyclerView.State state) {
+            outRect.bottom = verticalSpaceHeight;
+        }
+    }
+
 }

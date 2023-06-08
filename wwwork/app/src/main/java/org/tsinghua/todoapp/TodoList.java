@@ -7,20 +7,14 @@ public class TodoList {
     private ArrayList<Todo> data = new ArrayList<>();
     private int count = 0;
 
-    public TodoList(ArrayList<String> contents, ArrayList<Date> dates) {
-        /*for (int i = 0; i < contents.size(); i++) {
-            data.add(new Todo(i, contents.get(i), dates.get(i)));
-            count++;
-        }*/
-    }
 
     public TodoList() {
     }
 
-    public void insert(String the_name,String the_time,String the_title,String the_content,int[] arr) {
+    public void insert(String the_name,String the_time,String the_title,String the_content,String the_like,int the_id) {
 
         ArrayList<Todo> new_data = new ArrayList<Todo>();
-        new_data.add(new Todo(the_name,the_time,the_title,the_content,arr));   //new
+        new_data.add(new Todo(the_name,the_time,the_title,the_content,the_like,the_id));   //new
         for (int i = 0;i < count;i++){
             new_data.add(data.get(i));
         }

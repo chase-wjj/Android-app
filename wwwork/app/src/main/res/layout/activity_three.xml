@@ -8,15 +8,14 @@
 
     <TextView
         android:id="@+id/newtiezi"
-        android:layout_width="106dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginBottom="47dp"
+        android:layout_width="117dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginBottom="32dp"
         android:text=" 新帖子"
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginBottom="82dp"
+        android:layout_marginBottom="49dp"
         android:background="@color/my_color"
         android:onClick="returnReply"
         android:shadowRadius="@integer/material_motion_duration_medium_2"
@@ -37,11 +36,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="401dp"
-        android:layout_height="325dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="53dp"
+        android:layout_width="408dp"
+        android:layout_height="225dp"
+        android:layout_marginBottom="79dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,17 +65,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="162dp"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="124dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="81dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="79dp"
+                    android:layout_height="121dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -87,12 +84,13 @@
                         android:layout_height="53dp"
                         android:text=" 内容 :"
                         android:textSize="25dp" />
+
                 </LinearLayout>
 
                 <EditText
                     android:id="@+id/contentedit"
-                    android:layout_width="329dp"
-                    android:layout_height="151dp"
+                    android:layout_width="316dp"
+                    android:layout_height="wrap_content"
                     android:enabled="true"
                     android:gravity="top"
                     android:inputType="textMultiLine"
