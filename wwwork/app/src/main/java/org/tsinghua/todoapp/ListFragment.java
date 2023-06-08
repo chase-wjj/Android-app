@@ -76,6 +76,12 @@ public class ListFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         // Give the recycler view a default layout manager.
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                adapter.notifyDataSetChanged();
+            }
+        });
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,7 +127,6 @@ public class ListFragment extends Fragment {
                     }
                     List<Blog> blogList = gson.fromJson(jsonArray.toString(), new TypeToken<List<Blog>>(){}.getType());
                     for (Blog blog : blogList){
-                        Log.v("get bloglist",blog.getBlogTitle());
                         todoList.insert(blog.getUsername(),blog.getTime(), blog.getBlogContent(), blog.getBlogTitle(),blog.getLike(),Integer.parseInt(blog.getId()));
                     }
                     getActivity().runOnUiThread(new Runnable() {
