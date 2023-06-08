@@ -51,18 +51,14 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoViewHolder> {
         String time = todoList.get(position).getTime();
         String title = todoList.get(position).getTitle();
         String current = todoList.get(position).getContent();
+        String like = todoList.get(position).getLike();
         holder.contentView.setText(current);
         holder.nameItemView.setText(name);
         holder.timeTimeView.setText(time);
         holder.titleView.setText(title);
         holder.titleView.setTextSize(24);
-        int[] arr = todoList.get(position).getArr();
-        holder.image1View.setImageResource(arr[0]);
-        holder.image1View.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        holder.image2View.setImageResource(arr[1]);
-        holder.image2View.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        holder.image3View.setImageResource(arr[2]);
-        holder.image3View.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        holder.likeView.setText(like);
+
 
     }
 
@@ -81,9 +77,9 @@ class TodoViewHolder extends RecyclerView.ViewHolder{
     public final TextView timeTimeView;
     public final TextView titleView;
     public final TextView contentView;
-    public final ImageView image1View;
-    public final ImageView image2View;
-    public final ImageView image3View;
+
+    public final TextView likeView;
+
 
 
 
@@ -93,25 +89,23 @@ class TodoViewHolder extends RecyclerView.ViewHolder{
         timeTimeView = itemView.findViewById(R.id.time_textView);
         titleView = itemView.findViewById(R.id.title_textView);
         contentView = itemView.findViewById(R.id.textView12);
-        image1View = itemView.findViewById(R.id.imageView2);
-        image2View = itemView.findViewById(R.id.imageView3);
-        image3View = itemView.findViewById(R.id.imageView4);
+        likeView = itemView.findViewById(R.id.textView15);
+
         /*todoItemView = itemView.findViewById(R.id.todo);
         todoTimeView = itemView.findViewById(R.id.totime);
         ImageButton imageButton = itemView.findViewById(R.id.imageButton);*/
         titleView.setOnClickListener(view -> {
             // Get the position of the item that was clicked.
             int position = getLayoutPosition();
-            Intent intent = new Intent(view.getContext(),SecondActivity.class);
+            Intent intent = new Intent(view.getContext(),BlogActivity.class);
             String[] message = {"","","",""};
             message[0] = adapter.getTodoList().get(position).getName();
             message[1] = adapter.getTodoList().get(position).getTime();
             message[2] = adapter.getTodoList().get(position).getTitle();
             message[3] = adapter.getTodoList().get(position).getContent();
-            int[] message_res = adapter.getTodoList().get(position).getArr();
-
+            int blog_id = adapter.getTodoList().get(position).getId();
             intent.putExtra("CONTENT_MESSAGE", message);
-            intent.putExtra("ARR_MESSAGE", message_res);
+            intent.putExtra("Blog_ID",blog_id);
             view.getContext().startActivity(intent);
             // Notify the adapter, that the data has changed so it can
             // update the RecyclerView to display the data.
