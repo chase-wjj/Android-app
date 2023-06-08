@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'org.tsinghua.todoapp'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "org.tsinghua.todoapp"

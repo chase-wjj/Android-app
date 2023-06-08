@@ -46,7 +46,7 @@ public class BlogActivity extends AppCompatActivity {
 
     public String username;
 
-    public int blogid;
+    public String blogid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -54,11 +54,11 @@ public class BlogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_blog);
         SharedPreferences sharedPreferences = getSharedPreferences("loggeduser", MODE_PRIVATE);
         username = sharedPreferences.getString("username", ""); // 从SharedPreferences中获取用户名
-        GetComment();
+
 
         Intent intent = getIntent();
         String[] message = intent.getStringArrayExtra("CONTENT_MESSAGE");
-        blogid = intent.getIntExtra("Blog_ID",-1);
+        blogid = String.valueOf(intent.getIntExtra("Blog_ID",-1));
 
         TextView nameView = findViewById(R.id.name_textView);
         TextView timeView = findViewById(R.id.time_textView);
@@ -69,12 +69,13 @@ public class BlogActivity extends AppCompatActivity {
         titleView.setText(message[2]);
         contentView.setText(message[3]);
 
+        GetComment();
+
         comment = findViewById(R.id.button3);
         editText = findViewById(R.id.editText5);
 
         recyclerView = findViewById(R.id.recyclerView);
-        commentList.insert("大佬666","LiHua","18:51:12");
-        commentList.insert("大佬777","WangLei","15:41:11");
+
 
         commentAdapter = new CommentAdapter(this,commentList);
         recyclerView.setAdapter(commentAdapter);
@@ -86,6 +87,12 @@ public class BlogActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AddComment();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        commentAdapter.notifyDataSetChanged();
+                    }
+                });
             }
         });
 
@@ -126,6 +133,7 @@ public class BlogActivity extends AppCompatActivity {
                 }
             });
 
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -149,12 +157,13 @@ public class BlogActivity extends AppCompatActivity {
                 public void onResponse(@NotNull Call call, @NotNull final Response response) throws IOException {
                     assert response.body() != null;
                     if (response.code() == 200){
-                        Log.v("Get Comment","success!");
+                        String mes = response.body().string();
+                        Log.v("Get Comment",mes);
                         editText.setText("");
                         Gson gson = new Gson();
                         JSONObject jsonObject = null;
                         try {
-                            jsonObject = new JSONObject(response.body().string());
+                            jsonObject = new JSONObject(mes);
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -164,8 +173,16 @@ public class BlogActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
-                        List<Comment> blogList = gson.fromJson(jsonArray.toString(), new TypeToken<List<Comment>>(){}.getType());
-
+                        List<theComment> rcommentList = gson.fromJson(jsonArray.toString(), new TypeToken<List<theComment>>(){}.getType());
+                        for (theComment comment1 : rcommentList){
+                            commentList.insert(comment1.getContent(),comment1.getUsername(),comment1.getTime(),comment1.getId());
+                        }
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                commentAdapter.notifyDataSetChanged();
+                            }
+                        });
                     }
 
 
@@ -178,12 +195,14 @@ public class BlogActivity extends AppCompatActivity {
 
 
     }
-    public class Comment{
+    public class theComment{
         String id;
         String blog_id;
         String username;
         String content;
         String time;
+
+
 
         public String getId() {
             return id;

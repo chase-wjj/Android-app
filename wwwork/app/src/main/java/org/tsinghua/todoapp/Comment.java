@@ -10,11 +10,18 @@ public class Comment {
 
     private String time;
 
-    Comment(String scontent,String susername,String stime){
+    private String id;
+
+    Comment(String scontent,String susername,String stime,String sid){
         this.content = scontent;
         this.time = stime;
         this.username = susername;
+        this.id = sid;
 
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getContent() {
