@@ -30,6 +30,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CommentViewHolder holder, int position){
+        String name = commentList.get(position).getUsername();
+        String time = commentList.get(position).getTime();
+        String content = commentList.get(position).getContent();
+        holder.timeText.setText(time);
+        holder.commentText.setText(content);
+        holder.name.setText(name);
 
     }
 
@@ -42,9 +48,17 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
 class CommentViewHolder extends RecyclerView.ViewHolder {
     TextView commentText;
 
+    TextView name;
+
+    TextView timeText;
+
+
+
     public CommentViewHolder(@NonNull View itemView,CommentAdapter adapter) {
         super(itemView);
-        commentText = itemView.findViewById(R.id.textView16);
+        commentText = itemView.findViewById(R.id.textView17);
+        name = itemView.findViewById(R.id.textView16);
+        timeText = itemView.findViewById(R.id.textView8);
     }
 
 }
