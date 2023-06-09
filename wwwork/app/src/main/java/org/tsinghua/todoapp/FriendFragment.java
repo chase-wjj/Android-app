@@ -46,11 +46,11 @@ public class FriendFragment extends Fragment {
     }
 
     private void initFriendList() {
-        Friend friend1 = new Friend("张三", "13812345678", R.drawable.person);
+        Friend friend1 = new Friend("zhangsan", "13812345678", R.drawable.person);
         friendList.add(friend1);
-        Friend friend2 = new Friend("李四", "13912345678", R.drawable.person);
+        Friend friend2 = new Friend("lisi", "13912345678", R.drawable.person);
         friendList.add(friend2);
-        Friend friend3 = new Friend("王五", "13712345678", R.drawable.person);
+        Friend friend3 = new Friend("wangwu", "13712345678", R.drawable.person);
         friendList.add(friend3);
     }
 

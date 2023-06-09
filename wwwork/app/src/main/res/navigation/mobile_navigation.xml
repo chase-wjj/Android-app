@@ -15,10 +15,10 @@
         android:label="@string/title_topic"
         tools:layout="@layout/fragment_topic" />
     <fragment
-        android:id="@+id/navigation_read"
+        android:id="@+id/navigation_friend"
         android:name="org.tsinghua.todoapp.FriendFragment"
-        android:label="好友"
-        tools:layout="@layout/fragment_topic" />
+        android:label="@string/title_friend"
+        tools:layout="@layout/fragment_friend" />
     <fragment
         android:id="@+id/navigation_mine"
         android:name="org.tsinghua.todoapp.MineFragment"

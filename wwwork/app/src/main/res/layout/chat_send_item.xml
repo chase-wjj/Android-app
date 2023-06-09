@@ -5,16 +5,25 @@
 
     <TextView
         android:id="@+id/chat_content_send"
-        android:layout_width="213dp"
+        android:layout_width="122dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="187dp"
         android:layout_marginBottom="10dp"
-        android:padding="10dp"
+        android:layout_toRightOf="@+id/head"
         android:background="#007aff"
+        android:padding="10dp"
         android:textColor="#ffffff" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/head"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/person" />
 
 </RelativeLayout>
