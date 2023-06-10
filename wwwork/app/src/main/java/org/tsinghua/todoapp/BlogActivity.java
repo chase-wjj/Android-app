@@ -128,7 +128,7 @@ public class BlogActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(BlogActivity.this,"发表Blog成功！",Toast.LENGTH_LONG).show();
+                                Toast.makeText(BlogActivity.this,"发表评论成功！",Toast.LENGTH_LONG).show();
                             }
                         });
                     }

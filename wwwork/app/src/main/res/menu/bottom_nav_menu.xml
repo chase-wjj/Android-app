@@ -10,7 +10,7 @@
         android:icon="@drawable/world"
         android:title="@string/title_topic" />
     <item
-        android:id="@+id/navigation_read"
+        android:id="@+id/navigation_friend"
         android:icon="@drawable/read"
         android:title="@string/title_friend" />
     <item
