@@ -44,25 +44,16 @@ public class HomeFragment extends Fragment {
             // 访问MainActivity中的username变量
             username = mainActivity.getUsername();
         }*/
-
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
 
-
-
         tabLayout = view.findViewById(R.id.tabLayout);
         viewPager = view.findViewById(R.id.viewpager);
-
-
         PagerAdapter adapter = new PagerAdapter(this);
-
-
-
         viewPager.setAdapter(adapter);
-
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> {
                     switch (position) {
@@ -76,13 +67,12 @@ public class HomeFragment extends Fragment {
                             tab.setText("关注");
                             break;
                         case 3:
-                            tab.setText("热点");
+                            tab.setText("我的发帖");
                             break;
                     }
                 }
         );
         tabLayoutMediator.attach();
-
         return view;
     }
 

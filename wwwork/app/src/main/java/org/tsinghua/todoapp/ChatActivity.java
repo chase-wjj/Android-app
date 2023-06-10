@@ -22,7 +22,7 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat);
-
+        AppController.getInstance().addActivity(this);
         String friendName = getIntent().getStringExtra("friendName");
         String friendPhoneNumber = getIntent().getStringExtra("friendPhoneNumber");
 
@@ -52,4 +52,10 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppController.getInstance().removeActivity(this);
+    }
+
 }

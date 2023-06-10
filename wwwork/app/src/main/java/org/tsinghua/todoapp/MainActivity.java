@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppController.getInstance().addActivity(this);
         //获取登录界面传递而来的username
         SharedPreferences sharedPreferences = getSharedPreferences("loggeduser", MODE_PRIVATE);
         username = sharedPreferences.getString("username", ""); // 从SharedPreferences中获取用户名
@@ -67,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppController.getInstance().removeActivity(this);
+    }
+
 
 
 }

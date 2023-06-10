@@ -1,8 +1,9 @@
 package org.tsinghua.todoapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -34,24 +34,29 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class ListFragment extends Fragment {
+public class MyBlogFragment extends Fragment {
+    View view;
     private final TodoList todoList = new TodoList();
     private RecyclerView recyclerView;
     private TodoListAdapter adapter;
-    private Button addButton;
 
-    private View view;
+    public Button addButton;
+
+    public String username;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        GetBlog();
-    }
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("loggeduser", Context.MODE_PRIVATE);
+        username = sharedPreferences.getString("username", ""); // 从SharedPreferences中获取用户名
+        getMyBlog();
 
+    }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_list, container, false);
         addButton = view.findViewById(R.id.add_button);
+        addButton.setVisibility(View.INVISIBLE);
         recyclerView = view.findViewById(R.id.recyclerview);
         // Create an adapter and supply the data to be displayed.
         adapter = new TodoListAdapter(getContext(), todoList);
@@ -65,21 +70,20 @@ public class ListFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(),NewActivity.class);
-                view.getContext().startActivity(intent);
-            }
-        });
+
         return view;
     }
-    public void GetBlog(){
-        String requestUrl = "http://10.0.2.2:5000/blog/getBlogs/";
+    public void getMyBlog(){
+        String requestUrl = "http://10.0.2.2:5000/blog/getMyBlogs/";
         try {
             OkHttpClient client = new OkHttpClient();
+            MediaType JSON = MediaType.parse("application/json; charset=utf-8");//数据类型为json格式，
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("username",username);
+            @SuppressWarnings("deprecation") RequestBody body = RequestBody.create(JSON, jsonObject.toString());
             Request request = new Request.Builder()
                     .url(requestUrl)
+                    .post(body)
                     .build();
             client.newCall(request).enqueue(new Callback() {
                 @Override

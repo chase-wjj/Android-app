@@ -41,6 +41,7 @@ public class NewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_three);
+        AppController.getInstance().addActivity(this);
         titleEdit = findViewById(R.id.titleedit);
         contentEdit = findViewById(R.id.contentedit);
         button = findViewById(R.id.button);
@@ -95,5 +96,11 @@ public class NewActivity extends AppCompatActivity {
         }
 
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppController.getInstance().removeActivity(this);
+    }
+
 
 }

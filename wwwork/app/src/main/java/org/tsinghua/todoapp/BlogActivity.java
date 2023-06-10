@@ -52,6 +52,7 @@ public class BlogActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog);
+        AppController.getInstance().addActivity(this);
         SharedPreferences sharedPreferences = getSharedPreferences("loggeduser", MODE_PRIVATE);
         username = sharedPreferences.getString("username", ""); // 从SharedPreferences中获取用户名
 
@@ -87,12 +88,7 @@ public class BlogActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AddComment();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        commentAdapter.notifyDataSetChanged();
-                    }
-                });
+
             }
         });
 
@@ -119,6 +115,14 @@ public class BlogActivity extends AppCompatActivity {
                     assert response.body() != null;
                     if (response.code() == 201){
                         Log.v("Add Comment","success!");
+                        String mes = String.valueOf(editText.getText());
+                        commentList.insert(mes,username,"","");
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                commentAdapter.notifyDataSetChanged();
+                            }
+                        });
                         editText.setText("");
 
                         runOnUiThread(new Runnable() {
@@ -158,7 +162,6 @@ public class BlogActivity extends AppCompatActivity {
                     assert response.body() != null;
                     if (response.code() == 200){
                         String mes = response.body().string();
-                        Log.v("Get Comment",mes);
                         editText.setText("");
                         Gson gson = new Gson();
                         JSONObject jsonObject = null;
@@ -237,5 +240,11 @@ public class BlogActivity extends AppCompatActivity {
             outRect.bottom = verticalSpaceHeight;
         }
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppController.getInstance().removeActivity(this);
+    }
+
 
 }

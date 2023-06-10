@@ -14,11 +14,10 @@ public class PagerAdapter extends FragmentStateAdapter {
     private final ArrayList<Fragment> mFragments = new ArrayList<>();
     public PagerAdapter(HomeFragment fragment) {
         super(fragment);
-
         mFragments.add(new ListFragment());
         mFragments.add(new EmptyFragment());
         mFragments.add(new FriendFragment());
-        mFragments.add(new MineFragment());
+        mFragments.add(new MyBlogFragment());
     }
 
 

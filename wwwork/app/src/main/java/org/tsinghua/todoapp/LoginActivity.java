@@ -48,13 +48,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        AppController.getInstance().addActivity(this);
         uname_edit = findViewById(R.id.username);
         pass_edit = findViewById(R.id.password);
         login_button = findViewById(R.id.login);
         register_button = findViewById(R.id.register);
         result = findViewById(R.id.result);
-
-
 
     }
 
@@ -145,4 +144,10 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppController.getInstance().removeActivity(this);
+    }
+
 }

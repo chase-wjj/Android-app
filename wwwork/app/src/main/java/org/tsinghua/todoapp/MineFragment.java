@@ -39,10 +39,13 @@ public class MineFragment extends Fragment {
     EditText homeEdit;
     EditText jobEdit;
 
+    Button logout;
+    public SharedPreferences sharedPreferences;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("loggeduser", Context.MODE_PRIVATE);
+        sharedPreferences = getActivity().getSharedPreferences("loggeduser", Context.MODE_PRIVATE);
         username = sharedPreferences.getString("username", ""); // 从SharedPreferences中获取用户名
         if(username != null){
             Log.v("Minefragment中获取username",username);
@@ -58,6 +61,7 @@ public class MineFragment extends Fragment {
         mobileEdit = view.findViewById(R.id.editText4);
         homeEdit = view.findViewById(R.id.editText2);
         jobEdit = view.findViewById(R.id.editText3);
+        logout = view.findViewById(R.id.button5);
         getAccountInfo();
         Button button = view.findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
@@ -66,11 +70,48 @@ public class MineFragment extends Fragment {
                 ChangeAccountInfo(v);
             }
         });
-
-
-
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Logout();
+            }
+        });
         return view;
     }
+    public void Logout(){
+        String requestUrl = "http://10.0.2.2:5000/account/logout/";
+        try {
+            OkHttpClient client = new OkHttpClient();
+            MediaType JSON = MediaType.parse("application/json; charset=utf-8");//数据类型为json格式，
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("username",username);
+            @SuppressWarnings("deprecation") RequestBody body = RequestBody.create(JSON, jsonObject.toString());
+            Request request = new Request.Builder()
+                    .url(requestUrl)
+                    .post(body)
+                    .build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {}
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull final Response response) throws IOException {
+                    assert response.body() != null;
+                    if (response.code() == 401) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.remove("loggeduser");
+                        editor.apply();
+                        AppController.getInstance().finishAllActivities();
+                        Intent intent = new Intent(getContext(), LoginActivity.class);
+                        startActivity(intent);
+                    }
+                }
+            });
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
 
     //获取账号信息

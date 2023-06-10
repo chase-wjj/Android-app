@@ -34,13 +34,15 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="122dp"
-        android:layout_height="56dp"
+        android:layout_width="125dp"
+        android:layout_height="52dp"
         android:layout_marginStart="144dp"
         android:layout_marginBottom="38dp"
         android:text="立即保存"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
@@ -131,5 +133,14 @@
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登出"
+        tools:layout_editor_absoluteX="288dp"
+        tools:layout_editor_absoluteY="58dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
