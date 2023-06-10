@@ -12,7 +12,7 @@
     <item
         android:id="@+id/navigation_read"
         android:icon="@drawable/read"
-        android:title="@string/title_read" />
+        android:title="@string/title_friend" />
     <item
         android:id="@+id/navigation_mine"
         android:icon="@drawable/mine"

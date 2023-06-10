@@ -10,13 +10,14 @@ import android.widget.TextView;
 import java.util.List;
 
 public class ChatAdapter extends BaseAdapter {
+
     private static final int VIEW_TYPE_RECEIVE = 0;
     private static final int VIEW_TYPE_SEND = 1;
 
     private Context context;
-    private List<Message> messageList;
+    private MessageList messageList;
 
-    public ChatAdapter(Context context, List<Message> messageList) {
+    public ChatAdapter(Context context, MessageList messageList) {
         this.context = context;
         this.messageList = messageList;
     }
@@ -40,7 +41,6 @@ public class ChatAdapter extends BaseAdapter {
     public int getViewTypeCount() {
         return 2;
     }
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
